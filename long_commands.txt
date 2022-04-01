@@ -1,0 +1,21 @@
+Long commands used in the book
+==============================
+
+
+Chapter 9. Machine Learning
+
+Recipe Installing Edge Impulse
+
+$ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+$ sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps
+$ npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm
+
+
+Recipe Responding to Spoken Commands in Python
+
+$ sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
+$ pip3 install edge_impulse_linux -i https://pypi.python.org/simple
+
+$ pip install numpy --upgrade
+
+
