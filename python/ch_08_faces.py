@@ -1,7 +1,7 @@
-import cv2
+import cv2, pkg_resources
 
-cv2_data_dir = '/usr/local/lib/python3.7/dist-packages/cv2/data/'
-face_cascade = cv2.CascadeClassifier(cv2_data_dir + 'haarcascade_frontalface_default.xml')
+haar_file = pkg_resources.resource_filename('cv2', 'data/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier(haar_file)
 
 img = cv2.imread('faces.jpg', cv2.IMREAD_GRAYSCALE)
 

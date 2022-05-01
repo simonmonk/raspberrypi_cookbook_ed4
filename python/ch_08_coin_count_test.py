@@ -18,7 +18,8 @@ while True:
 
     for pt in detected_circles[0]: 
         a, b, r = pt[0], pt[1], pt[2] 
-        cv2.circle(img, (a, b), r, (0, 0, 0), 2) 
+        print(a, b)
+        cv2.circle(img, (int(a), int(b)), int(r), (0, 0, 0), 2) 
 
     cv2.imshow('image', img)
     key = cv2.waitKey(0)
