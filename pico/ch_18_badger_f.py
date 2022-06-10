@@ -25,7 +25,7 @@ while True:
         badger.pen(0)
         badger.text(str(t), 20, 10, scale=16)
         badger.text("o", 220, 5, scale=8)
-        badger.text("C", 255, 20, scale=8)
+        badger.text("F", 255, 20, scale=8)
         badger.update()
         sleep(5)
 
