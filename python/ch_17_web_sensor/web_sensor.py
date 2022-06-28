@@ -1,10 +1,10 @@
-import os, time
+from gpiozero import CPUTemperature
+import time
 from bottle import route, run, template
 
 def cpu_temp():
-    dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cpu_temp = dev.read()[5:-3]
-    return cpu_temp
+    cpu_temp = CPUTemperature()
+    return str(cpu_temp.temperature)
 
 @route('/temp')
 def temp():

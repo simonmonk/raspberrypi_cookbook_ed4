@@ -1,6 +1,5 @@
 import subprocess
 
-sound_file = '/home/pi/raspberrypi_cookbook_ed3/python/school_bell.mp3'
-sound_out = 'local'
+sound_file = 'school_bell.mp3'
 
-subprocess.run(['omxplayer', '-o', sound_out, sound_file])
+subprocess.run(['cvlc', sound_file])

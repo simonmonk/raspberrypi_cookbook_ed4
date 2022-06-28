@@ -1,6 +1,7 @@
-import os, glob, time, datetime
+import glob, time, datetime
+from gpiozero import CPUTemperature
 
-log_period = 60 # seconds
+log_period = 10 # seconds
 
 logging_folder = glob.glob('/media/*')[0]
 dt = datetime.datetime.now()
@@ -8,8 +9,7 @@ file_name = "temp_log_{:%Y_%m_%d}.csv".format(dt)
 logging_file = logging_folder + '/' + file_name
 
 def read_temp():
-    dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cpu_temp = cpu_temp_s = dev.read()[5:-3] # top and tail string
+    cpu_temp = CPUTemperature().temperature
     return cpu_temp
 
 def log_temp():

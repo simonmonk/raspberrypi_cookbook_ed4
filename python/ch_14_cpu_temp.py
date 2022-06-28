@@ -1,7 +1,7 @@
-import os, time
+import time
+from gpiozero import CPUTemperature
 
 while True:
-    dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cpu_temp = dev.read()
-    print(cpu_temp)
+    cpu_temp = CPUTemperature()
+    print(cpu_temp.temperature)
     time.sleep(1)

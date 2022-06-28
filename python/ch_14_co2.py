@@ -10,7 +10,7 @@ def read_co2():
     low = raw_data[3]
     return high * 256 + low;
 
-sensor = serial.Serial('/dev/ttyS0')
+sensor = serial.Serial('/dev/serial0')
 print(sensor.name)
 if sensor.is_open:
     print("Open")

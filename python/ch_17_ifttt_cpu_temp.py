@@ -1,7 +1,8 @@
-import time, os 
+import time
+from gpiozero import CPUTemperature
 import requests
 
-MAX_TEMP = 37.0
+MAX_TEMP = 33.0
 MIN_T_BETWEEN_WARNINGS = 60 # Minutes
 
 EVENT = 'cpu_too_hot'
@@ -15,10 +16,9 @@ def send_notification(temp):
     print(response.status_code)
 
 def cpu_temp():
-    dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cpu_temp = dev.read()[5:-3]
-    return float(cpu_temp)
-    
+    cpu_temp = CPUTemperature().temperature
+    return cpu_temp
+
 while True:
     temp = cpu_temp()
     print("CPU Temp (C): " + str(temp))
