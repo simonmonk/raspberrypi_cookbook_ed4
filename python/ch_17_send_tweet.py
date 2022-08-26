@@ -17,6 +17,10 @@ def cpu_temp():
     dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
     cpu_temp = dev.read()[5:-3]
     return float(cpu_temp)
+
+def cpu_temp():
+    cpu_temp = CPUTemperature().temperature
+    return cpu_temp
     
 while True:
     temp = cpu_temp()
