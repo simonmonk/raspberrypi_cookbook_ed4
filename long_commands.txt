@@ -2,6 +2,45 @@ Long commands used in the book
 ==============================
 
 
+Chapter 3
+=========
+
+Recipe 3.24 - Running a Program or Script Automatically as a Service
+------------
+
+### BEGIN INIT INFO
+# Provides: my_server
+# Required-Start: $remote_fs $syslog $network
+# Required-Stop: $remote_fs $syslog $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Simple Web Server
+# Description: Simple Web Server
+### END INIT INFO
+
+#! /bin/sh
+# /etc/init.d/my_server
+
+export HOME
+case "$1" in
+  start)
+    echo "Starting My Server"
+    sudo /usr/bin/python /home/pi/myserver.py  2>&1 &
+  ;;
+stop)
+  echo "Stopping My Server"
+  PID=`ps auxwww | grep myserver.py | head -1 | awk '{print $2}'`
+  kill -9 $PID
+  ;;
+*)
+  echo "Usage: /etc/init.d/my_server {start|stop}"
+  exit 1
+;;
+esac
+exit 0
+
+
+
 Chapter 9. Machine Learning
 
 Recipe Installing Edge Impulse
