@@ -6,9 +6,9 @@ face_cascade = cv2.CascadeClassifier(haar_file)
 img = cv2.imread('faces.jpg', cv2.IMREAD_GRAYSCALE)
 
 scale_factor = 1.4
-min_neighbours = 5
+min_neighbors = 5
 
-faces = face_cascade.detectMultiScale(img, scale_factor, min_neighbours)
+faces = face_cascade.detectMultiScale(img, scale_factor, min_neighbors)
 print(faces)
 
 for (x,y,w,h) in faces:
