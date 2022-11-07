@@ -2,8 +2,39 @@ Long commands used in the book
 ==============================
 
 
-Chapter 3
-=========
+Recipe 2.9
+----------
+$ sudo apt update
+$ sudo apt install samba
+$ sudo apt install samba-common-bin
+
+[USB]
+path = /media/pi/NAS
+comment = NAS Drive
+valid users = pi
+writeable = yes
+browseable = yes
+create mask = 0777
+public = yes
+
+$ sudo mkdir /pishare
+$ sudo smbmount -o username=pi,password=raspberry //192.168.1.16/USB /pishare
+
+Recipe 2.10
+-----------
+$ sudo apt update
+$ sudo apt install cups
+$ sudo usermod -a -G lpadmin pi
+
+
+Recipe 3.20
+-----------
+$ wget http://www.icrobotics.co.uk/wiki/images/c/c3/Pifm.tar.gz
+
+Recipe 3.21
+-----------
+$ git clone https://github.com/simonmonk/raspberrypi_cookbook_ed4.git
+
 
 Recipe 3.24 - Running a Program or Script Automatically as a Service
 ------------
@@ -40,21 +71,252 @@ esac
 exit 0
 
 
+Recipe 4.5
+----------
+$ git clone https://github.com/F5OEO/rpitx
+$ cd rpitx
+$ ./install.sh
 
-Chapter 9. Machine Learning
 
-Recipe Installing Edge Impulse
+Recipe 4.15
+-----------
+$ sudo groupadd lasercutter
+$ sudo usermod -a -G lasercutter pi
 
+$ sudo apt install libxml2-dev libxslt-dev
+$ sudo apt install libusb-1.0-0
+$ sudo apt install libusb-1.0-0-dev
+
+$ pip3 install -r requirements.txt
+
+$ python3 k40_whisperer.py
+
+
+Recipe 8.1
+----------
+$ sudo apt install libatlas-base-dev
+$ pip3 install --upgrade pip
+$ pip3 install imutils
+$ pip3 install numpy --upgrade
+
+$ pip3 install opencv-python
+
+
+Recipe 8.2
+----------
+$ python3
+Python 3.9.2 (default, Mar 12 2021, 04:06:34)
+[GCC 10.2.1 20210110] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+>>> from imutils.video import VideoStream
+>>> vs = VideoStream(src=0).start()
+>>> img = vs.read()
+>>> cv2.imshow('image',img)
+>>> cv2.waitKey(0)
+
+
+Recipe 8.3
+----------
+$ python3
+Python 3.9.2 (default, Mar 12 2021, 04:06:34)
+[GCC 10.2.1 20210110] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+>>> from imutils.video import VideoStream
+>>> vs = VideoStream(src=0).start()
+>>> img = vs.read()
+>>> cv2.imshow('image',img)
+>>> cv2.waitKey(0)
+
+
+Recipe 8.7
+----------
+$ sudo apt install tesseract-ocr
+$ sudo apt install libtesseract-dev
+
+
+
+Recipe 9.1
+----------
+$ git clone https://github.com/tensorflow/examples --depth 1
+
+$ sudo apt install libportaudio2
+$ cd ~/examples/lite/examples/object_detection/raspberry_pi
+$ sh setup.sh
+$ python3 detect.py --model efficientdet_lite0.tflite
+
+
+Recipe 9.2
+----------
+$ cd ~/examples/lite/examples/object_detection/raspberry_pi/
+$ cp ~/raspberrypi_cookbook_ed4/python/ch_09_person_detector.py .
+$ python3 ch_09_person_detector.py
+
+
+Recipe 9.3
+----------
+$ git clone https://github.com/tensorflow/examples --depth 1
+
+$ cd ~/examples/lite/examples/sound_classification/raspberry_pi
+$ sh setup.sh
+$ python3 classify.py
+
+Recipe 9.4
+----------
+$ cd ~/examples/lite/examples/sound_classification/raspberry_pi/
+$ cp ~/raspberrypi_cookbook_ed4/python/ch_09_detect_whistle.py .
+$ python3 ch_09_detect_whistle.py
+
+Recipe 9.5
+----------
 $ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-$ sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps
+$ sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-
 $ npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm
 
+$ pip3 install numpy --upgrade
 
-Recipe Responding to Spoken Commands in Python
 
-$ sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
-$ pip3 install edge_impulse_linux -i https://pypi.python.org/simple
+Recipe 9.7
+----------
+$ edge-impulse-linux-runner --clean
 
-$ pip install numpy --upgrade
+Recipe 9.8
+----------
+$ sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-
+$ pip3 install edge_impulse_linux -i https://oreil.ly/ua1nS
 
+$ pip3 install numpy --upgrade
+$ pip3 install pyaudio
+
+$ edge-impulse-linux-runner --download modelfile.eim
+
+
+Recipe 10.5
+-----------
+$ sudo apt install i2c-tools
+$ sudo i2cdetect -y 1
+
+
+Recipe 12.2
+-----------
+$ git clone https://github.com/srcshelton/servoblaster.git
+$ cd servoblaster
+$ sudo make
+$ sudo make install
+
+
+Recipe 12.3
+-----------
+$ pip3 install adafruit-blinka
+$ sudo pip3 install adafruit-circuitpython-servokit
+
+
+Recipe 14.1
+-----------
+$ git clone https://github.com/simonmonk/pi_analog.git
+$ cd pi_analog
+$ sudo python3 setup.py install
+
+
+Recipe 14.6
+-----------
+$ git clone https://github.com/monkmakes/pmon.git
+$ pip3 install guizero
+$ cd pmon/raspberry_pi
+$ python3 01_meter.py
+
+
+Recipe 14.20
+------------
+$ sudo pip3 install smbus2
+$ sudo pip3 install vl53l1x
+
+
+Recipe 14.21
+------------
+$ pip3 install adafruit-blinka
+$ pip3 install adafruit-circuitpython-mpr121
+
+Recipe 14.22
+------------
+$ wget http://monkmakes.com/downloads/mmcck.sh
+$ chmod +x mmcck.sh
+$ ./mmcck.sh
+$ cd ~/clever_card_kit $ python3 01_read.py
+
+
+Recipe 15.1
+-----------
+$ cd ~
+$ pip3 install adafruit-blinka
+$ pip3 install adafruit-circuitpython-ht16k33
+$ sudo apt-get install python3-pil
+
+
+Recipe 15.2
+-----------
+$ cd ~
+$ pip3 install adafruit-blinka
+$ pip3 install adafruit-circuitpython-ht16k33
+$ sudo apt install python3-pil
+
+
+Recipe 15.4
+-----------
+$ cd ~
+$ pip3 install adafruit-blinka
+$ pip3 install adafruit-circuitpython-ssd1306
+$ sudo apt install python3-pil
+$ sudo apt install python3-numpy
+
+Recipe 15.5
+-----------
+$ pip3 install adafruit-blinka
+$ sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
+
+Recipe 15.7
+-----------
+$ curl https://get.pimoroni.com/inkyphat | bash
+
+
+Recipe 16.3
+-----------
+$ cd ~
+$ git clone https://github.com/pimoroni/pirate-audio
+$ cd pirate-audio/mopidy
+$ sudo ./install.sh
+
+
+Recipe 18.1
+-----------
+$ sudo apt-get update
+$ sudo apt install -y mosquitto mosquitto-clients
+$ sudo systemctl enable mosquitto.service
+
+Recipe 18.3
+-----------
+$ git clone https://github.com/espressif/esptool.git
+$ cd esptool
+
+$ wget https://github.com/arendst/Sonoff-Tasmota/releases/download/v6.6.0/sonoff-basic.bin
+
+$ cd ~/esptools
+$ python3 esptool.py --port /dev/serial0 erase_flash
+
+$ python3 esptool.py --port /dev/serial0 write_flash -fs 1MB -fm dout 0x0 sonoff-basic.bin
+
+Recipe 18.7
+-----------
+$ sudo systemctl stop nodered.service
+$ apt-get update
+$ cd ~/.node-red
+$ sudo apt-get install npm
+$ npm install node-red-dashboard
+$ sudo systemctl start nodered.service
+
+Recipe 18.9
+-----------
+$ cd ~
+$ wget https://github.com/knolleary/pubsubclient/archive/master.zip
 
