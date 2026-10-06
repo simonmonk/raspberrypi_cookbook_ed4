@@ -142,6 +142,7 @@ Recipe 9.1
 $ git clone https://github.com/tensorflow/examples --depth 1
 
 $ sudo apt install libportaudio2
+$ pip3 install --upgrade tflite-support==0.4.3
 $ cd ~/examples/lite/examples/object_detection/raspberry_pi
 $ sh setup.sh
 $ python3 detect.py --model efficientdet_lite0.tflite
@@ -156,8 +157,8 @@ $ python3 ch_09_person_detector.py
 
 Recipe 9.3
 ----------
+$ sudo apt install python3-matplotlib
 $ git clone https://github.com/tensorflow/examples --depth 1
-
 $ cd ~/examples/lite/examples/sound_classification/raspberry_pi
 $ sh setup.sh
 $ python3 classify.py
@@ -170,11 +171,15 @@ $ python3 ch_09_detect_whistle.py
 
 Recipe 9.5
 ----------
+Old
 $ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 $ sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-
 $ npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm
 
-$ pip3 install numpy --upgrade
+Pi 4
+$ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+$ sudo apt install -y gcc g++ make build-essential nodejs sox gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-$ plugins-base-apps
+$ npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm
 
 
 Recipe 9.7
@@ -183,7 +188,7 @@ $ edge-impulse-linux-runner --clean
 
 Recipe 9.8
 ----------
-$ sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-
+$ sudo apt-get install libatlas-base-dev libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
 $ pip3 install edge_impulse_linux -i https://oreil.ly/ua1nS
 
 $ pip3 install numpy --upgrade
@@ -319,4 +324,3 @@ Recipe 18.9
 -----------
 $ cd ~
 $ wget https://github.com/knolleary/pubsubclient/archive/master.zip
-
